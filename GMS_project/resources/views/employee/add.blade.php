@@ -21,7 +21,7 @@
                 @endif
 
                 <div class="dashboard-container">
-                    <nav>
+                    <nav class = "side-menu">
                         <ul>
                         <li><a href="#" class="logo">
                                     <img src="/logo.png" alt="">

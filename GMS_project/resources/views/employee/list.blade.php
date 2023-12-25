@@ -21,7 +21,7 @@
                 @endif
 
                 <div class="dashboard-container">
-                    <nav>
+                    <nav class = "side-menu">
                         <ul>
                             <li><a href="#" class="logo">
                                     <img src="/logo.png" alt="">
@@ -79,7 +79,7 @@
                             <h1>Danh sách nhân viên</h1>
                             <i class="fas fa-user-cog"></i>
                         </div>
-                        <div class="main-skills" style="height: 93%">
+                        <div class="main-skills" >
 
                             <div action="" class="" style="background: white; width: 100%; padding: 20px; " method="POST">
                                 @if (session('msg'))
@@ -87,79 +87,107 @@
                                 @endif
 
                                 <div class="overflow-hidden row">
-                                    
-            
-                                        <div class="col-3">
 
-                                            <form action=" {{ route('employee.index') }} " method="GET" class="row">
-                                                <select class="form-select form-select-sm col" name="department" aria-label=".form-select-sm example">
+
+                                    <div class="col-3">
+
+                                        <form action=" {{ route('employee.index') }} " method="GET" class="row">
+                                            <select class="form-select form-select-sm col" name="department" aria-label=".form-select-sm example">
                                                 <option value="0">Tất cả bộ phận</option>
                                                 @if (!empty($departmentList))
-                                                    @foreach ($departmentList as $key)
-                                                    <option value="{{ $key->id }}" {{ request() -> department == $key->id ? 'selected':false}} >{{ $key->name }}</option>
-                                                    @endforeach
-                                                @endif 
-                                                </select>
-                                                <div class="col-md-1"></div>
-                                                <button type="submit" class="btn btn-outline-dark col-2"><i class="fas fa-filter"></i></button>
-                                            </form>
+                                                @foreach ($departmentList as $key)
+                                                <option value="{{ $key->id }}" {{ request() -> department == $key->id ? 'selected':false}}>{{ $key->name }}</option>
+                                                @endforeach
+                                                @endif
+                                            </select>
+                                            <div class="col-md-1"></div>
+                                            <button type="submit" class="btn btn-outline-dark col-2"><i class="fas fa-filter"></i></button>
+                                        </form>
 
 
-                                        </div>
-                                        <div class="col-md-1"></div>
+                                    </div>
+                                    <div class="col-md-1"></div>
 
-                                        <div class="col mb-3">
-                                            <form action=" {{ route('employee.index') }} " method="GET" class="row">
-                                                <input class="form-control col" name="keywords" type="search" placeholder="Tìm nhân viên" aria-label="Search">
-                                                <button class="btn  btn-outline-dark col-md-2" type=""><i class="fas fa-search"></i></button>
-                                            </form>
-                                        </div>
+                                    <div class="col mb-3">
+                                        <form action=" {{ route('employee.index') }} " method="GET" class="row">
+                                            <input class="form-control col" name="keywords" type="search" placeholder="Tìm nhân viên" aria-label="Search">
+                                            <button class="btn  btn-outline-dark col-md-2" type=""><i class="fas fa-search"></i></button>
+                                        </form>
+                                    </div>
 
-                                        <div class="col-md-1"></div>
+                                    <div class="col-md-1"></div>
 
 
-                                        <div class="col-md-3 mb-3">
-                                            <a href="{{route('employee.getAdd')}}" class="btn btn-info btn-sm">+ Thêm nhân viên</a>
-                                        </div>
-                                    
+                                    <div class="col-md-3 mb-3">
+                                        <a href="{{route('employee.getAdd')}}" class="btn btn-info btn-sm">+ Thêm nhân viên</a>
+                                    </div>
+
                                 </div>
 
                                 <!-- @if (session('msg'))
                                 <div class="alert alert-success text-center">{{session('msg')}}</div>
                                 @endif -->
 
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <!-- <th scope="col">Ảnh</th> -->
-                                            <th scope="col">Tên</th>
-                                            <th scope="col">Bộ phận</th>
-                                            <th scope="col">Vị trí</th>
-                                            <th scope="col">Số điện thoại</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Sửa</th>
-                                            <th scope="col">Xoá</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="table-group-divider">
-                                        @if (!empty($employeesList))
-                                        @foreach ($employeesList as $key)
-                                        <tr>
-                                            <th scope="row">{{$key->employee_id}}</th>
-                                            <!-- <td>Image</td> -->
-                                            <td>{{$key->first_name}} {{$key->last_name}}</td>
-                                            <td>{{$key->department_name}}</td>
-                                            <td>{{$key->position_name}}</td>
-                                            <td>{{$key->phone_number}}</td>
-                                            <td>{{$key->email}}</td>
-                                            <td><a href="{{route('employee.getEdit',['id'=>$key->employee_id])}}"><i class="fas fa-edit" style="color: #96d35f;"></i></a></td>
-                                            <td><a onclick="return confirm('Bạn có chắc chắn muốn xoá dữ liệu nhân viên này không')" href="{{route('employee.delete',['id'=>$key->employee_id])}}"><i class="fas fa-user-minus" style="color: #ff2600;"></i></a></td>
-                                        </tr>
-                                        @endforeach
-                                        @endif
-                                    </tbody>
-                                </table>
+                                <div>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <!-- <th scope="col">Ảnh</th> -->
+                                                <th scope="col">Tên</th>
+                                                <th scope="col">Bộ phận</th>
+                                                <th scope="col">Vị trí</th>
+                                                <th scope="col">Số điện thoại</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Sửa</th>
+                                                <th scope="col">Xoá</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-group-divider">
+                                            @if (!empty($employeesList))
+                                            @foreach ($employeesList as $key)
+                                            <tr>
+                                                <th scope="row">{{$key->employee_id}}</th>
+                                                <!-- <td>Image</td> -->
+                                                <td>{{$key->first_name}} {{$key->last_name}}</td>
+                                                <td>{{$key->department_name}}</td>
+                                                <td>{{$key->position_name}}</td>
+                                                <td>{{$key->phone_number}}</td>
+                                                <td>{{$key->email}}</td>
+                                                <td><a href="{{route('employee.getEdit',['id'=>$key->employee_id])}}"><i class="fas fa-edit" style="color: #96d35f;"></i></a></td>
+                                                <td><a onclick="return confirm('Bạn có chắc chắn muốn xoá dữ liệu nhân viên này không')" href="{{route('employee.delete',['id'=>$key->employee_id])}}"><i class="fas fa-user-minus" style="color: #ff2600;"></i></a></td>
+                                            </tr>
+                                            @endforeach
+                                            @endif
+                                        </tbody>
+                                    </table>
+
+                                    @if (!empty($employeesList->links()))
+
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination">
+                                            <!-- Trang trước -->
+                                            <li class="page-item {{ $employeesList->previousPageUrl() ? '' : 'disabled' }}">
+                                                <!-- <a class="page-link" href="{{ $employeesList->previousPageUrl() }}" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a> -->
+                                            </li>
+
+                                            <!-- Các trang -->
+                                            {{ $employeesList->onEachSide(1)->links('pagination::bootstrap-4') }}
+
+                                            <!-- Trang tiếp theo -->
+                                            <li class="page-item {{ $employeesList->nextPageUrl() ? '' : 'disabled' }}">
+                                                <!-- <a class="page-link" href="{{ $employeesList->nextPageUrl() }}" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a> -->
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+                                    @endif
+                                </div>
+
 
                             </div>
 

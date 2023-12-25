@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\EmployeeRequest;
 
+use Illuminate\Support\Collection;
+
 use Illuminate\Support\Facades\DB;
+
+use Illuminate\Pagination\Paginator;
 
 use App\Models\Employee;
 use App\Models\Department;
@@ -42,7 +46,6 @@ class EmployeeController extends Controller
                 $filters[] = ['employee.department_id', '=', $deparmentId];
             }
            
-            
         }
 
         if ($request -> keywords) {

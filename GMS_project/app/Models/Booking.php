@@ -31,8 +31,10 @@ class Booking extends Model
                 $query->orWhere('car.model', 'like', '%'.$keywords.'%');
             });
         }
+
+        $bookings = $bookings -> paginate(10);
         
-        return $bookings->get();
+        return $bookings;
     }
 
     public function getLastBooking() {

@@ -21,7 +21,7 @@
                 @endif
 
                 <div class="dashboard-container">
-                    <nav>
+                    <nav class = "side-menu">
                         <ul>
                         <li><a href="#" class="logo">
                                     <img src="/logo.png" alt="">
@@ -159,6 +159,31 @@
                                         @endif
                                     </tbody>
                                 </table>
+
+                                @if (!empty($orderList->links()))
+
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination">
+                                            <!-- Trang trước -->
+                                            <li class="page-item {{ $orderList->previousPageUrl() ? '' : 'disabled' }}">
+                                                <!-- <a class="page-link" href="{{ $orderList->previousPageUrl() }}" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a> -->
+                                            </li>
+
+                                            <!-- Các trang -->
+                                            {{ $orderList->onEachSide(1)->links('pagination::bootstrap-4') }}
+
+                                            <!-- Trang tiếp theo -->
+                                            <li class="page-item {{ $orderList->nextPageUrl() ? '' : 'disabled' }}">
+                                                <!-- <a class="page-link" href="{{ $orderList->nextPageUrl() }}" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a> -->
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+                                    @endif
 
                             </div>
 

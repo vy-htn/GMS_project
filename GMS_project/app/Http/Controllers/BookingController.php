@@ -208,9 +208,9 @@ class BookingController extends Controller
             'booking_created' => $createdDate,
             'type_id' => $request->service_type,
             'booking_note' => $request->booking_note,
-            'customer_id' => 2,
+            'customer_id' => 1,
             'status_id' => 1,
-            'car_id' =>2
+            'car_id' =>1
         ];
 
         $this->bookings->addBooking($dataInsert);

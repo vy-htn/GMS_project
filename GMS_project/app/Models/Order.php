@@ -34,7 +34,7 @@ class Order extends Model
         });
     }
 
-        return $orders->get();
+        return $orders->paginate(10);
     }
 
     public function getLastOrderId() {

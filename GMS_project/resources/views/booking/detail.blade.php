@@ -22,7 +22,7 @@
                 @endif
 
                 <div class="dashboard-container">
-                    <nav>
+                    <nav class = "side-menu">
                         <ul>
                         <li><a href="#" class="logo">
                                     <img src="/logo.png" alt="">
@@ -80,7 +80,7 @@
                             <h1>Chi tiết lịch hẹn</h1>
                             <i class="fas fa-user-cog"></i>
                         </div>
-                        <div class="main-skills row" style="height: 100%; background-color: white">
+                        <div class="main-skills row" style=" background-color: white">
 
                             <form action="" class="" method="POST">
                                 @csrf

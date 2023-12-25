@@ -21,7 +21,7 @@
                 @endif
 
                 <div class="dashboard-container">
-                    <nav>
+                    <nav class = "side-menu">
                         <ul>
                         <li><a href="#" class="logo">
                                     <img src="/logo.png" alt="">
@@ -140,7 +140,7 @@
 
                                             <div class="col-md-12 mb-3"><br></div>
 
-                                            <a type="button" onclick="return confirm('Bạn có chắc chắn muốn xoá dữ liệu nhân viên này không')" href="{{route('employee.delete',['id'=>$employeeDetail->employee_id])}}" class="btn btn-light"><i class="fa-solid fa-trash"></i></a>
+                                            <a type="button" onclick="return confirm('Bạn có chắc chắn muốn xoá dữ liệu nhân viên này không')" href="{{route('employee.delete',['id'=>$employeeDetail->employee_id])}}" class="btn btn-light"><i class="fas fa-user-times"></i></a>
                                             <div class="col-md-12">
 
                                             </div>

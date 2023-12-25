@@ -37,8 +37,10 @@ class Employee extends Model
 
         // $sql = DB::getQueryLog();
         // dd($sql);
+
+        $employees = $employees ->paginate(10);
         
-        return $employees->get();
+        return $employees;
     }
 
     public function getLastEmployeeId() {
