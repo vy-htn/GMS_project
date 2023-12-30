@@ -13,7 +13,7 @@ body{
   background: #dfe9f5;
 }
 .dashboard-container{
-  display: flex;
+  display: flex
 } 
  .side-menu{
   position: relative;
@@ -199,3 +199,54 @@ a:hover{
 .js{
   color: rgb(28, 98, 179);
 } 
+
+.main-content {
+  padding: 20px;
+  height: 93%;
+  box-shadow: 4px 4px 7px 0px #929292;;
+  background-color: rgba(255, 255, 255, 0.4);  
+}
+
+.tb {
+  
+  width: 100%;
+  background-color: #fffb;
+}
+
+.tb .table_header{
+  padding: .8rem 1rem;
+  height: 40px;
+}
+
+.tb .table_body {
+  padding: .8rem;
+  border-radius: .6rem;
+}
+
+.tb .table_body tr {
+  height: 50px;
+  position: relative;
+}
+
+.tb .table_body tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.main-skills .content {
+  width: 100%; 
+ 
+}
+
+.infogroup-container {
+  box-shadow: 4px 4px 7px 0px #929292;
+  border-radius: 4px;
+  background:white;
+  background-color: white;  
+  margin: 20px;
+}
+
+.content-header {
+  margin: 20px;
+}
+
+

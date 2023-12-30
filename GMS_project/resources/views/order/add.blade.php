@@ -79,15 +79,16 @@
                             <h1>Thêm đơn hàng</h1>
                             <i class="fas fa-user-cog"></i>
                         </div>
-                        <form class="main-skills row" id="addOrder" style="background: white;" style="height: 100%" method="POST">
-                            @csrf
+                        
                             @if (session('msg'))
                                 <div class="alert alert-success text-center">{{session('msg')}}</div>
-                                @endif
-
-                            <div class="col-md-12">
+                            @endif
+                        <form class="main-content " id="addOrder"  method="POST">
+                        @csrf
+                        <div class="row">
+                        <div class="col-md-12">
                                 <div class="p-3">
-                                    <button type="button" class="btn-close btn-lg" aria-label="Close"></button>
+                                <a href="{{route('order.index')}}" class="btn-close" aria-label="Close"></a>                                
                                 </div>
                             </div>
 
@@ -124,43 +125,34 @@
 
                             <div class="col-md-9">
 
-                                <table class="table col-md-9" id="accessaryList" style="left: 0">
-                                    <thead>
+                                <table class="tb col-md-9" id="accessaryList" style="left: 0">
+                                    <thead class="table_header">
                                         <tr>
-                                            <th scope="col">ID</th>
+                                            <th scope="col" class="text-center">ID</th>
                                             <th scope="col">Thông tin sản phẩm</th>
                                             <th scope="col">Số lượng</th>
                                             <th scope="col">Đơn giá</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="accessaryList-tbody">
+                                    <tbody id="accessaryList-tbody" class="table_body">
 
                                     </tbody>
                                 </table>
 
                             </div>
 
-                            <div class="col-md-3" style="right: 0">
+                            <div class="col-md-3">
 
                                 <div class="border border-2">
 
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Chi phí đơn hàng</td>
+                                                <th scope="col">Tóm tắt đơn hàng</td>
                                                 <th scope="col"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td scope="row">Tổng giá</td>
-                                                <td>$60</td>
-                                            </tr>
-                                            <tr>
-                                                <td scope="row">Phí vận chuyển</td>
-                                                <td>$10</td>
-
-                                            </tr>
                                             <tr>
                                                 <td scope="row">Thuế</td>
                                                 <td>$10</td>
@@ -169,24 +161,29 @@
                                                 <td scope="row">Tổng</td>
                                                 <td></td>
                                             </tr>
+                                            <tr>
+                                                <td scope="row">Tổng số lượng</td>
+                                                <td id="totalQuantity"></td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Tổng chi phí</td>
+                                                <td>$10</td>
+
+                                            </tr>
+                                            
                                         </tbody>
                                     </table>
 
                                     <div class="d-grid gap-2 col-10 mx-auto">
                                         <button class="btn btn-info" type="submit">Xác nhận</button>
-                                        <!-- <button class="btn btn-info" id="submitBtn" type="button">Xác nhận</button> -->
                                     </div>
 
-                                    <br>
                                 </div>
 
 
                             </div>
 
-
-
-
-
+                        </div>
 
                         </form>
                     </section>
@@ -203,7 +200,37 @@
 @section('js')
 
 <script>
+
+// var accessaryList = document.querySelectorAll("#accessaryList-tbody tr");
+
+// accessaryList.forEach(function(item) {
+   
+//     var input = item.querySelector("input");
+
+//     console.log(input);
+
+//     // Add click event to each input
+//     input.addEventListener("change",function(){
+//         console.log('change')
+//     });
+// });
+
+// function CountQuantity() {
+//         var sum = 0;
+//         inputNumbers.forEach(function(input) {
+//             sum += parseFloat(input.value) || 0; 
+//         });
+
+//         document.getElementById("result").innerHTML = sum;
+//     }
+  
     $(document).ready(function() {
+
+       
+
+    
+
+
         // Function to handle AJAX request and update the result input
         function updateAccessaryInput() {
             var supplierValue = $("#supplier").val();
@@ -247,7 +274,7 @@
                         var price = value.price;
                         var quantity = 1;
 
-                        $('#accessaryList').append('<tr><td scope="row"><p class="fw-normal" name="id" >' + id + '</p></td><td scope="row"><p class="fw-normal">' + name + '</p></td><td><input type="number" name="' + id + '" value="' + quantity + '"></td><td> <p name="price" >' + price + '</p></td></tr>');
+                        $('#accessaryList').append('<tr><td class="text-center" scope="row"><p class="fw-normal" name="id" >' + id + '</p></td><td scope="row"><p class="fw-normal">' + name + '</p></td><td><input class="quantity" type="number" name="' + id + '" value="' + quantity + '"></td><td> <p name="price" >' + price + '</p></td></tr>');
 
                     });
                 }
@@ -279,31 +306,6 @@
 
                 dataOrderDetail[id] = quantity;
             });
-
-            // $('#accessaryList-tbody tr').each(function() {
-
-            //     // Lấy giá trị của mỗi input trong hàng
-            //     $(this).find('input').each(function() {
-            //         var accessaryId = $(this).attr('name');
-
-            //         var quantity = $(this).val();
-            //         console.log(price);
-
-            //         totalPrice = totalPrice + price * quantity;
-            //         row[accessaryId] = quantity;
-
-            //     });
-
-
-            // dataOrderDetail.push(row);
-
-            // });
-
-
-
-            // data.push(supplierValue);
-
-            // data.push(totalPrice);
 
             data = [
                 supplierValue,

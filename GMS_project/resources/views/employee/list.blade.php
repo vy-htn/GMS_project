@@ -79,14 +79,14 @@
                             <h1>Danh sách nhân viên</h1>
                             <i class="fas fa-user-cog"></i>
                         </div>
-                        <div class="main-skills" >
+                        <div class="main-content" >
 
-                            <div action="" class="" style="background: white; width: 100%; padding: 20px; " method="POST">
+                            <div >
                                 @if (session('msg'))
                                 <div class="alert alert-success text-center">{{session('msg')}}</div>
                                 @endif
 
-                                <div class="overflow-hidden row">
+                                <div class="overflow-hidden tool-bar row mb-3">
 
 
                                     <div class="col-3">
@@ -129,33 +129,33 @@
                                 @endif -->
 
                                 <div>
-                                    <table class="table">
-                                        <thead>
+                                    <table class="tb mb-3 rounded-2">
+                                        <thead class="table_header ">
                                             <tr>
-                                                <th scope="col">#</th>
+                                                <th scope="col" class="text-center">#</th>
                                                 <!-- <th scope="col">Ảnh</th> -->
                                                 <th scope="col">Tên</th>
-                                                <th scope="col">Bộ phận</th>
-                                                <th scope="col">Vị trí</th>
-                                                <th scope="col">Số điện thoại</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Sửa</th>
-                                                <th scope="col">Xoá</th>
+                                                <th scope="col" class="text-center">Bộ phận</th>
+                                                <th scope="col" class="text-center">Vị trí</th>
+                                                <th scope="col" class="text-center">Số điện thoại</th>
+                                                <th scope="col" class="text-center">Email</th>
+                                                <th scope="col" ></th>
+                                                <th scope="col" ></th>
                                             </tr>
                                         </thead>
-                                        <tbody class="table-group-divider">
+                                        <tbody class="table-group-divider table_body">
                                             @if (!empty($employeesList))
                                             @foreach ($employeesList as $key)
-                                            <tr>
-                                                <th scope="row">{{$key->employee_id}}</th>
+                                            <tr class="table-row">
+                                                <th scope="row" class="text-center">{{$key->employee_id}}</th>
                                                 <!-- <td>Image</td> -->
                                                 <td>{{$key->first_name}} {{$key->last_name}}</td>
-                                                <td>{{$key->department_name}}</td>
-                                                <td>{{$key->position_name}}</td>
-                                                <td>{{$key->phone_number}}</td>
-                                                <td>{{$key->email}}</td>
-                                                <td><a href="{{route('employee.getEdit',['id'=>$key->employee_id])}}"><i class="fas fa-edit" style="color: #96d35f;"></i></a></td>
-                                                <td><a onclick="return confirm('Bạn có chắc chắn muốn xoá dữ liệu nhân viên này không')" href="{{route('employee.delete',['id'=>$key->employee_id])}}"><i class="fas fa-user-minus" style="color: #ff2600;"></i></a></td>
+                                                <td class="text-center">{{$key->department_name}}</td>
+                                                <td class="text-center">{{$key->position_name}}</td>
+                                                <td class="text-center">{{$key->phone_number}}</td>
+                                                <td class="text-center">{{$key->email}}</td>
+                                                <td ><a href="{{route('employee.getEdit',['id'=>$key->employee_id])}}"><i class="fas fa-edit" style="color: #96d35f;"></i></a></td>
+                                                <td ><a onclick="return confirm('Bạn có chắc chắn muốn xoá dữ liệu nhân viên này không')" href="{{route('employee.delete',['id'=>$key->employee_id])}}" class="text-center"><i class="fas fa-user-minus" style="color: #ff2600;"></i></a></td>
                                             </tr>
                                             @endforeach
                                             @endif

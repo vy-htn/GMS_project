@@ -79,9 +79,9 @@
                             <h1>Chi tiết đơn hàng</h1>
                             <i class="fas fa-user-cog"></i>
                         </div>
-                        <form class="main-skills" id="addOrder" style="background: white;" style="height: 100%" method="POST">
+                        <form class="main-content" id="addOrder" method="POST">
                             @csrf
-                            <div class="row" style="background-color: white; padding:10px">
+                            <div class="row">
                                 
                                 <p></p>
                                 <h5 class="col-md-12 text-muted mb-3">Đơn hàng #{{$orderDetail->orders_id}}</h5>
@@ -90,8 +90,8 @@
 
                                 <div class="col-md-8">
 
-                                    <table class="table col-md-10" id="accessaryList" style="left: 0">
-                                        <thead>
+                                    <table class="tb col-md-10" id="accessaryList" style="left: 0">
+                                        <thead class="table_header">
                                             <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Thông tin sản phẩm</th>
@@ -99,7 +99,7 @@
                                                 <th scope="col">Đơn giá</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="table_body">
 
                                         @foreach($orderDetailList as $key)
                                         <tr>
@@ -116,9 +116,30 @@
 
                                 </div>
 
-                                <div class="col-md-4" style="right: 0">
+                                <div class="col-md-4">
 
-                                    <div class="border border-2">
+                                <div class="">
+
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Thông tin đơn hàng</td>
+                                                    <th scope="col"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td scope="row">Nhà cung cấp</td>
+                                                    <td>{{ $orderDetail->supplier_name }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <br>
+                                    </div>
+
+
+                                    <div class="">
 
                                         <table class="table">
                                             <thead>
@@ -129,21 +150,13 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td scope="row">Tổng giá</td>
+                                                    <td scope="row">Tổng chi phí đơn hàng</td>
                                                     <td>{{ $orderDetail->total_price }} VND</td>
                                                 </tr>
                                                 <tr>
-                                                    <td scope="row">Phí vận chuyển</td>
-                                                    <td>$10</td>
+                                                    <td scope="row">Tổng số lượng</td>
+                                                    <td>{{ $orderDetail->total_quantity }}</td>
 
-                                                </tr>
-                                                <tr>
-                                                    <td scope="row">Thuế</td>
-                                                    <td>$10</td>
-                                                </tr>
-                                                <tr>
-                                                    <td scope="row">Tổng</td>
-                                                    <td>{{ $orderDetail->total_price }} VND</td>
                                                 </tr>
                                             </tbody>
                                         </table>

@@ -22,9 +22,9 @@
                 @endif
 
                 <div class="dashboard-container">
-                    <nav class = "side-menu">
+                    <nav class="side-menu">
                         <ul>
-                        <li><a href="#" class="logo">
+                            <li><a href="#" class="logo">
                                     <img src="/logo.png" alt="">
                                     <span class="nav-item">DashBoard</span>
                                 </a></li>
@@ -64,7 +64,7 @@
                                     <i class="fas fa-id-badge"></i>
                                     <span class="nav-item">Nhân viên</span>
                                 </a></li>
-                                <li><a href=" {{route('order.index')}}">
+                            <li><a href=" {{route('order.index')}}">
                                     <i class="fas fa-id-badge"></i>
                                     <span class="nav-item">Đơn hàng</span>
                                 </a></li>
@@ -80,36 +80,53 @@
                             <h1>Chi tiết lịch hẹn</h1>
                             <i class="fas fa-user-cog"></i>
                         </div>
-                        <div class="main-skills row" style=" background-color: white">
+                        <div class="main-content">
 
-                            <form action="" class="" method="POST">
+                            <form action="" class="row" method="POST">
                                 @csrf
 
-                                <div class="col-12 row" style="background-color: white ">
-                                    <div class="col-md-12"><br></div>
-                                    <h5 class="col-md-6  text-muted">Lịch hẹn #{{$bookingDetail->booking_id}}</h5>
-                                    <div class="progress col-md-6">
-                                        <div class="progress-bar bg-success" role="progressbar" aria-label="Success example" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <i class="fas fa-calendar col-md-1"></i>
-                                    <p class="col-md-5">Tạo ngày {{$createdDate['day']}} tháng {{$createdDate['month']}} năm {{$createdDate['year']}}</p>
 
-                                    <div class="col-md-9"></div>
-
-                                    @if ($bookingDetail->status_id > 0 && $bookingDetail->status_id < 4 ) 
-                                    @if ($bookingDetail->status_id > 0 && $bookingDetail->status_id <= 2 ) <div class="col-md-1">
-                                            <a onclick="return confirm('Bạn có chắc chắn muốn từ chối không')" href="{{route('booking.Cancel',['id'=>$bookingDetail->booking_id])}}" type="button" class="btn  btn-outline-secondary"><i class="far fa-window-close"></i></a>
-                                            
+                                <h5 class="col-md-6  text-muted">Lịch hẹn #{{$bookingDetail->booking_id}}</h5>
+                                <div class="col-md-3">
                                 </div>
-                                @endif
                                 <div class="col-md-2">
-                                    <a onclick="return confirm('Bạn có chắc chắn muốn cập nhật không')" href="{{route('booking.updateStatus',['id'=>$bookingDetail->booking_id])}}" type="button" class="btn btn-outline-info">{{$buttonDisplay}} <i class="fas fa-chevron-right"></i></a>
+                                    @if($bookingDetail->status_id == 1)
+                                    
+                                        <h3><span class="badge text-bg-warning">{{$bookingDetail->status_name}}</span></h3>
+                                        @elseif ($bookingDetail->status_id == 2)
+                                    
+                                        <h3><span class="badge text-bg-info">{{$bookingDetail->status_name}}</h3></span>
+                                        @elseif ($bookingDetail->status_id == 3)
+                                    
+                                        <h3><span class="badge text-bg-success">{{$bookingDetail->status_name}}</span></h3>
+                                        @elseif ($bookingDetail->status_id == 4)
+                                    
+                                        <h3><span class="badge text-bg-secondary">{{$bookingDetail->status_name}}</span></h3>
+                                        @elseif ($bookingDetail->status_id == 5)
+                                    
+                                        <h3><span class="badge text-bg-dark">{{$key->status_name}}</span></h3>
+                                        @elseif ($bookingDetail->status_id == 6)
+                                    
+                                        <h3><span class="badge text-bg-dark">{{$bookingDetail->status_name}}</span></h3>
+                                        @endif
                                 </div>
 
+                                <p class="col-md-5"> <i class="fas fa-calendar"></i> Tạo ngày {{$createdDate['day']}} tháng {{$createdDate['month']}} năm {{$createdDate['year']}}</p>
 
-                                @endif
+                                <div class="col-md-8"></div>
 
+                                @if ($bookingDetail->status_id > 0 && $bookingDetail->status_id < 4 ) @if ($bookingDetail->status_id > 0 && $bookingDetail->status_id <= 2 ) 
+                                <div class="col-md-1">
+                                        <a onclick="return confirm('Bạn có chắc chắn muốn từ chối không')" href="{{route('booking.Cancel',['id'=>$bookingDetail->booking_id])}}" type="button" class="btn  btn-outline-secondary"><i class="far fa-window-close"></i></a>
+                                </div>
+                        
+                        @endif
+                        <div class="col-md-3">
+                            <a onclick="return confirm('Bạn có chắc chắn muốn cập nhật không')" href="{{route('booking.updateStatus',['id'=>$bookingDetail->booking_id])}}" type="button" class="btn btn-outline-info">{{$buttonDisplay}} <i class="fas fa-chevron-right"></i></a>
                         </div>
+
+
+                        @endif
 
                         <div class="col-12 mb-3">
                             <div class="card-body row">
@@ -160,38 +177,47 @@
                         </div>
 
                         <div class="col-12 mb-3">
-                        <div class="card-body row">
-            <h5 class="card-title mb-3">Thông tin khách hàng</h5>
-            <div class="col-md-12 mb-3">
-                <label for="inputFirstname" class="form-label">Họ tên khách hàng</label>
-                <input type="text" readonly class="form-control" id="inputName" value="{{$bookingDetail->customer_name}}">
-            </div>
+                            <div class="card-body row">
+                                <h5 class="card-title mb-3">Thông tin khách hàng</h5>
+                                <div class="col-md-12 mb-3">
+                                    <label for="inputFirstname" class="form-label">Họ tên khách hàng</label>
+                                    <input type="text" readonly class="form-control" id="inputName" value="{{$bookingDetail->customer_name}}">
+                                </div>
 
-            <div class="col-md-6 mb-3">
-                <label for="inputEmail" class="form-label">Email</label>
-                <input type="email" readonly class="form-control" id="inputEmail" value="{{$bookingDetail->email}}">
-            </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="inputEmail" class="form-label">Email</label>
+                                    <input type="email" readonly class="form-control" id="inputEmail" value="{{$bookingDetail->email}}">
+                                </div>
 
-            <div class="col-md-6 mb-3">
-                <label for="inputPhoneNumber" class="form-label">Số điện thoại</label>
-                <input type="text" readonly class="form-control" id="inputPhoneNumber" value="{{$bookingDetail->phone_number}}">
-            </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="inputPhoneNumber" class="form-label">Số điện thoại</label>
+                                    <input type="text" readonly class="form-control" id="inputPhoneNumber" value="{{$bookingDetail->phone_number}}">
+                                </div>
 
-            <div class="col-md-12 mb-3">
-                <label for="inputAddress" class="form-label">Địa chỉ</label>
-                <input type="text" readonly class="form-control" id="inputAddress" value="{{$bookingDetail->address}}">
-            </div>
-        </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="inputAddress" class="form-label">Địa chỉ</label>
+                                    <input type="text" readonly class="form-control" id="inputAddress" value="{{$bookingDetail->address}}">
+                                </div>
+                            </div>
                         </div>
 
-                        </form>
 
+
+              
+
+
+
+
+
+                            </form>
+                        </div>
+                    </section>
                 </div>
-                </section>
             </div>
+
         </div>
     </div>
-    </div>
+    
 
 
 

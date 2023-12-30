@@ -98,6 +98,6 @@ class Employee extends Model
     }
 
     public function deleteEmployee($id) {
-        return DB::delete('DELETE FROM '.$this->table.' WHERE EMPLOYEE_ID = ?', [$id]);
+        return DB::delete('DELETE FROM '.$this->table.' WHERE ID = ?', [$id]);
     }
 }

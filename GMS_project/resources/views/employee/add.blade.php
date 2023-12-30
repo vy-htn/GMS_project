@@ -81,15 +81,11 @@
                         </div>
                         <div class="main-skills" >
 
-                            <form id="employee-form" class="row g-3" style="background: white; width: 100%; padding: 20px; " action="" method="POST">
+                            <form id="employee-form" class="row g-3" class="content" style=" " action="" method="POST">
                                 @csrf
                                 @error('msg')
                                 <div class="alert alert-danger text-center">{{$message}}</div>
                                 @enderror
-                                <div class="col-md-12">
-                                    <label for="inputImage" class="form-label">Ảnh</label>
-                                    <input type="file" class="form-control" id="inputImage">
-                                </div>
 
                                 <div class="col-md-6">
                                     <label for="inputFirstName" class="form-label">Họ</label>
@@ -185,9 +181,7 @@
                                 <div class="col-1">
                                     <button type="submit" name="submit_button" value="save" class="btn btn-info">Lưu</button>
                                 </div>
-                                <div class="col-10">
-                                    <button type="submit" name="submit_button" value="saveandnew" class="btn btn-success">Lưu và thêm mới</button>
-                                </div>
+                               
                                 <div class="col-1">
                                     <a href="{{route('employee.index')}}" value="cancel" class="btn btn-dark">Huỷ</a>
                                 </div>
