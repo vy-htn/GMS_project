@@ -1,0 +1,26 @@
+.search-bar
+{
+    background-color: aliceblue;
+}
+.spare-part-list
+{
+    background-color: aliceblue;
+    border-width: 3px;
+    border-color: black;
+    border-collapse: collapse; 
+    text-align: center;
+}
+.title
+{
+    border-bottom-style: solid;
+    border-color: black;
+}
+tr:nth-child() { border: solid thin; }
+.odd-line
+{
+    background-color: rgb(220, 220, 220);
+}
+.even-line
+{
+    background-color: aliceblue;
+}
