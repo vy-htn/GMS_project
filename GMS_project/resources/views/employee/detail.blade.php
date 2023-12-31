@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- page content -->
-<div style="background: gray;" class="right_col" role="main">
+<div style="background: light_blue;" class="right_col" role="main">
 
     <div class="row">
 

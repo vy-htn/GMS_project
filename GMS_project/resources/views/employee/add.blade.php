@@ -11,7 +11,7 @@
             <div class="container overflow-hidden">
                 <div class="col">
                     <div class="p-3">
-                        <h2 class="text-center">Thêm nhân viên</h2>
+                        <h2 class="text-center">Thêm khách hàng</h2>
                     </div>
                 </div>
 

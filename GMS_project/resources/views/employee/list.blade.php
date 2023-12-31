@@ -12,20 +12,20 @@
                 <div class="row gx-5">
                     <div class="col">
                         <div class="p-3">
-                            <h2>Danh sách nhân viên</h2>
+                            <h2>Danh sách khách hàng</h2>
                         </div>
                     </div>
                     <div class="col">
                         <div class="p-3">
                             <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Tìm nhân viên" aria-label="Search">
+                                <input class="form-control me-2" type="search" placeholder="Tìm khách hàng" aria-label="Search">
                                 <button class="btn btn-outline-success" type="submit">Tìm</button>
                             </form>
                         </div>
                     </div>
                     <div class="col">
                         <div class="p-3">
-                            <button type="button" class="btn btn-info">+ Thêm nhân viên</button>
+                            <button type="button" class="btn btn-info">+ Thêm khách hàng</button>
                         </div>
                     </div>
                 </div>
