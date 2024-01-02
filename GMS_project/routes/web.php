@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home/customer', [App\Http\Controllers\CustomerController::class, 'index'])->name('home.customer');
+
+// Route::resource('/home/customer', [App\Http\Controllers\CustomerController::class]);
+Route::get('/customer-create', [App\Http\Controllers\CustomerController::class, 'create'])->name('customer.create');
+
+
+Route::get('/home/hoa-don', function () {
+    return view('hoa-don');
+});

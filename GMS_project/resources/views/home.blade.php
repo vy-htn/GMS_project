@@ -27,13 +27,13 @@
                     </a></li>
                     <li><a href="">
                     <i class="fas fa-tasks"></i>
-                    <span class="nav-item">Job card</span>
+                    <span class="nav-item">Job </span>
                     </a></li>
                     <li><a href="#">
                     <i class="fas fa-home"></i>
                     <span class="nav-item">Hóa đơn</span>
                     </a></li>
-                    <li><a href="">
+                    <li><a href="{{ route('home.customer') }}">
                     <i class="fas fa-user"></i>
                     <span class="nav-item">Khách hàng</span>
                     </a></li>
@@ -69,40 +69,14 @@
                 </nav>
             
                 <section class="main">
-                <div class="main-top">
-                    <h1>Shortcuts</h1>
-                    <i class="fas fa-user-cog"></i>
-                </div>
-                <div class="main-skills">
-                    <div class="card">
-                    <i class="fas fa-clipboard-check"></i>
-                    <h3 id = "job-complete-txt">20</h3>
-                    <p>Complete Job</p>
-                    <button>See details ></button>
-                    </div>
-                    <div class="card">
-                    <i class="fas fa-car-side"></i>
-                    <h3 id="total-vehicles-txt">30</h3>
-                    <p>Total Vehicles</p>
-                    <button>See details ></button>
-                    </div>
-                    <div class="card">
-                    <i class="fas fa-calendar"></i>
-                    <h3>2</h3>
-                    <p>Today Booking</p>
-                    <button>See details ></button>
-                    </div>
-                    <div class="card">
-                    <i class="fas fa-dollar-sign"></i>
-                    <h3>245</h3>
-                    <p>Total Sale</p>
-                    <button>See details ></button>
-                    </div>
-                </div>
+                @yield('main-content')
+               
                 </section>
             </div>
         </div>
     </div>
 </div>
 </body>
+
+
 @endsection
