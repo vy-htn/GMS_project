@@ -57,7 +57,7 @@
                     <i class="fas fa-user-tie	"></i>
                     <span class="nav-item">Nhà cung cấp</span>
                     </a></li>
-                    <li><a href="#">
+                    <li><a href=" {{route('employee.index')}}">
                     <i class="fas fa-id-badge"></i>
                     <span class="nav-item">Nhân viên</span>
                     </a></li>

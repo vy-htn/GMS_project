@@ -76,5 +76,11 @@
             @yield('content')
         </main>
     </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    @yield('js')
+    @stack('scripts')
+    
+</body>
 </body>
 </html>
