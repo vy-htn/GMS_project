@@ -1,5 +1,6 @@
-@extends('layouts.app')
-@section('content')
+@extends('home')
+@section('main-content')
+
 
 <head>
     <meta charset="UTF-8" />
@@ -21,58 +22,7 @@
                 @endif
 
                 <div class="dashboard-container">
-                    <nav class = "side-menu">
-                        <ul>
-                            <li><a href="#" class="logo">
-                                    <img src="/logo.png" alt="">
-                                    <span class="nav-item">DashBoard</span>
-                                </a></li>
-                            <li><a href="">
-                                    <i class="fas fa-tasks"></i>
-                                    <span class="nav-item">Job card</span>
-                                </a></li>
-                            <li><a href="#">
-                                    <i class="fas fa-home"></i>
-                                    <span class="nav-item">Hóa đơn</span>
-                                </a></li>
-                            <li><a href="">
-                                    <i class="fas fa-user"></i>
-                                    <span class="nav-item">Khách hàng</span>
-                                </a></li>
-                            <li><a href=" {{ route('booking.index') }} ">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span class="nav-item">Lịch hẹn</span>
-                                </a></li>
-                            <li><a href="">
-                                    <i class="fas fa-chart-bar"></i>
-                                    <span class="nav-item">Thống kê</span>
-                                </a></li>
-                            <li><a href="">
-                                    <i class="fas fa-cog"></i>
-                                    <span class="nav-item">Phụ tùng</span>
-                                </a></li>
-                            <li><a href="">
-                                    <i class="fas fa-car-alt"></i>
-                                    <span class="nav-item">Xe</span>
-                                </a></li>
-                            <li><a href="#">
-                                    <i class="fas fa-user-tie	"></i>
-                                    <span class="nav-item">Nhà cung cấp</span>
-                                </a></li>
-                            <li><a href=" {{route('employee.index')}}">
-                                    <i class="fas fa-id-badge"></i>
-                                    <span class="nav-item">Nhân viên</span>
-                                </a></li>
-                            <li><a href=" {{route('order.index')}}">
-                                    <i class="fas fa-id-badge"></i>
-                                    <span class="nav-item">Đơn hàng</span>
-                                </a></li>
-                            <li><a href="" class="logout">
-                                    <i class="fas fa-sign-out-alt"></i>
-                                    <span class="nav-item">Log out</span>
-                                </a></li>
-                        </ul>
-                    </nav>
+                   
 
                     <section class="main">
                         <div class="main-top">

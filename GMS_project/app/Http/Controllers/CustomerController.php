@@ -12,21 +12,40 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::paginate(5);
-        return view('customer',compact('customers'))->with ('i',request()->input('page',1)-1*5+4);
+        return view('/customer/customer',compact('customers'))->with ('i',request()->input('page',1)-1*5+4);
     }
     public function create()
     {
         $customer = Customer::paginate(5);
-        return view('customer-create');
+        return view('/customer/customer-create');
     }
-    public function edit()
+    public function edit(Customer $customer)
     {
-        $customer = Customer::paginate(5);
-        return view('customer-edit');
+        return view('/customer/customer-edit',compact('customer'));
     }
-    public function delete()
+    public function update(Request $request, Customer $customer){
+        
+        $customer->update($request->all());
+        return redirect()->route('customer.index')->with('thongbao', 'Cập nhật khách hàng thành công!');
+    }
+    public function destroy(Customer $customer)
     {
-        $customer = Customer::paginate(5);
-        return view('customer-delete');
+        $customer -> delete();
+        return redirect()->route('customer.index')->with('thongbao', 'Xóa khách hàng thành công!');
+
     }
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:customers',
+            'phone' => 'required|string|max:20',
+            'plateNo' => 'required|string|max:15',
+        ]);
+
+        // Create a new customer record
+        Customer::create($validatedData);
+        return redirect()->route('customer.index')->with('thongbao', 'Thêm khách hàng thành công!');
+    }
+
 }

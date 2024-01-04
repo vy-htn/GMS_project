@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\DashboardController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,7 +70,11 @@ Route::prefix('customercp')->name('customercp.booking.')->group(function()
 Route::post('booking/add', [BookingController::class, 'postAdd']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home/customer', [App\Http\Controllers\CustomerController::class, 'index'])->name('home.customer');
+Route::resource('/home/customer', CustomerController::class);
+Route::resource('/home/job', JobController::class);
+Route::resource('/home/dashboard', DashboardController::class);
+
+
 
 // Route::resource('/home/customer', [App\Http\Controllers\CustomerController::class]);
 Route::get('/customer-create', [App\Http\Controllers\CustomerController::class, 'create'])->name('customer.create');

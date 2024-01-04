@@ -21,31 +21,43 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Customer Details
-                            <a href="{{ route('customer.create') }}" class="btn btn-primary float-end">Add Students</a>
+                        <h4>Job Details
+                            <a href="{{ route('job.create') }}" class="btn btn-primary float-end">Thêm job</a>
                         </h4>
                     </div>
                     <div class="card-body">
-
+					@if (Session::has('thongbao'))
+						<div class="alert alert-success">
+							{{ Session::get('thongbao') }}
+						</div>
+					@endif
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Customer Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
                                     <th>Plate Number</th>
-                                    <th>Action</th>
+                                    <th>Description</th>
+                                    <th>Vehicle Model</th>
+                                    <th>Vehicle Type</th>
+                                    <th>Status</th>
+                                    <th>Pay</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($customers as $cu)
+                                @foreach ($jobs as $cu)
 								<tr>
 									<td>{{++$i}}</td>
-									<td>{{$cu->name}}</td>
-									<td>{{$cu->email}}</td>
-									<td>{{$cu->phone}}</td>
 									<td>{{$cu->plateNo}}</td>
+									<td>{{$cu->description}}</td>
+									<td>{{$cu->vehicle_model}}</td>
+									<td>{{$cu->vehicle_type}}</td>
+									<td> 
+                                <select class="form-select" id="employee_department" name="employee_department" aria-label="Default select example">
+                                        <option selected>{{$cu->status}}</option>
+                                    </select></td>
+									<td><select class="form-select" id="employee_department" name="employee_department" aria-label="Default select example">
+                                        <option selected>{{$cu->pay}}</option>
+                                    </select></td>
 
                                  @endforeach
                             </tbody>

@@ -21,11 +21,11 @@
             <div class="dashboard-container">
                 <nav>
                 <ul>
-                    <li><a href="#" class="logo">
+                    <li><a href="{{ route('dashboard.index') }}" class="logo">
                     <img src="/logo.png" alt="">
                     <span class="nav-item">DashBoard</span>
                     </a></li>
-                    <li><a href="">
+                    <li><a href="{{ route('job.index') }}">
                     <i class="fas fa-tasks"></i>
                     <span class="nav-item">Job </span>
                     </a></li>
@@ -33,17 +33,17 @@
                     <i class="fas fa-home"></i>
                     <span class="nav-item">Hóa đơn</span>
                     </a></li>
-                    <li><a href="{{ route('home.customer') }}">
+                    <li><a href="{{ route('customer.index') }}">
                     <i class="fas fa-user"></i>
                     <span class="nav-item">Khách hàng</span>
                     </a></li>
-                    <li><a href="">
+                    <li><a href=" {{ route('booking.index') }}">
                     <i class="fas fa-calendar-alt"></i>
                     <span class="nav-item">Lịch hẹn</span>
                     </a></li>
                     <li><a href="">
                     <i class="fas fa-chart-bar"></i>
-                    <span class="nav-item">Thống kê</span>
+                    <span class="nav-item">Dịch vụ</span>
                     </a></li>
                     <li><a href="">
                     <i class="fas fa-cog"></i>
@@ -54,16 +54,16 @@
                     <span class="nav-item">Xe</span>
                     </a></li>
                     <li><a href="#">
-                    <i class="fas fa-user-tie	"></i>
+                    <i class="fas fa-user-tie"></i>
                     <span class="nav-item">Nhà cung cấp</span>
                     </a></li>
                     <li><a href=" {{route('employee.index')}}">
                     <i class="fas fa-id-badge"></i>
                     <span class="nav-item">Nhân viên</span>
                     </a></li>
-                    <li><a href="" class="logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span class="nav-item">Log out</span>
+                    <li><a href="{{ route('order.index') }}">
+                    <i class="fas fa-order-alt"></i>
+                    <span class="nav-item">Đơn hàng</span>
                     </a></li>
                 </ul>
                 </nav>
