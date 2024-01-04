@@ -27,10 +27,8 @@ class Order extends Model
 
     if (!empty($keywords)) {
         $orders = $orders->where(function($query) use ($keywords) {
-            $query->orWhere('supplier_name', 'like', '%'.$keywords.'%');
-            $query->orWhere('last_name', 'like', '%'.$keywords.'%');
-            $query->orWhere('email', 'like', '%'.$keywords.'%');
-            $query->orWhere('phone_number', 'like', '%'.$keywords.'%');
+            $query->orWhere('name', 'like', '%'.$keywords.'%');
+            $query->orWhere('created_at', 'like', '%'.$keywords.'%');
         });
     }
 

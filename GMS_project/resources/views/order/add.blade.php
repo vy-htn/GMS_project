@@ -10,26 +10,16 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12-lg">
+    <div class="main-top">
+        <h1>Thêm đơn hàng</h1>
+        <i class="fas fa-user-cog"></i>
+    </div>
 
-                @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-                @endif
+    @if (session('msg'))
+    <div class="alert alert-success text-center">{{session('msg')}}</div>
+    @endif
 
-                      <section class="main">
-                        <div class="main-top">
-                            <h1>Thêm đơn hàng</h1>
-                            <i class="fas fa-user-cog"></i>
-                        </div>
-                        
-                            @if (session('msg'))
-                                <div class="alert alert-success text-center">{{session('msg')}}</div>
-                            @endif
-                        <form class="main-content " id="addOrder"  method="POST">
+    <form class="main-content" id="addOrder"  method="POST">
                         @csrf
                         <div class="row">
                         <div class="col-md-12">
@@ -132,11 +122,8 @@
                         </div>
 
                         </form>
-                    </section>
-                </div>
-            </div>
-        </div>
-    </div>
+
+
 </body>
 
 
@@ -146,35 +133,34 @@
 @section('js')
 
 <script>
+    // var accessaryList = document.querySelectorAll("#accessaryList-tbody tr");
 
-// var accessaryList = document.querySelectorAll("#accessaryList-tbody tr");
+    // accessaryList.forEach(function(item) {
 
-// accessaryList.forEach(function(item) {
-   
-//     var input = item.querySelector("input");
+    //     var input = item.querySelector("input");
 
-//     console.log(input);
+    //     console.log(input);
 
-//     // Add click event to each input
-//     input.addEventListener("change",function(){
-//         console.log('change')
-//     });
-// });
+    //     // Add click event to each input
+    //     input.addEventListener("change",function(){
+    //         console.log('change')
+    //     });
+    // });
 
-// function CountQuantity() {
-//         var sum = 0;
-//         inputNumbers.forEach(function(input) {
-//             sum += parseFloat(input.value) || 0; 
-//         });
+    // function CountQuantity() {
+    //         var sum = 0;
+    //         inputNumbers.forEach(function(input) {
+    //             sum += parseFloat(input.value) || 0; 
+    //         });
 
-//         document.getElementById("result").innerHTML = sum;
-//     }
-  
+    //         document.getElementById("result").innerHTML = sum;
+    //     }
+
     $(document).ready(function() {
 
-       
 
-    
+
+
 
 
         // Function to handle AJAX request and update the result input

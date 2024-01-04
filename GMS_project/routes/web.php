@@ -62,12 +62,16 @@ Route::prefix('booking')->name('booking.')->group(function()
 
 Route::prefix('customercp')->name('customercp.booking.')->group(function()
 {
-	Route::get('/booking/add',[BookingController::class, 'getAdd'])->name('getAdd');
+	Route::get('/mainpage', function () {
+		return view('customer_mainpage');
+	});
+		Route::get('/booking/add',[BookingController::class, 'getAdd'])->name('getAdd');
 	Route::post('/booking/add',[BookingController::class, 'postAdd'])->name('postAdd');
 });
 
 
-Route::post('booking/add', [BookingController::class, 'postAdd']);
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/home/customer', CustomerController::class);

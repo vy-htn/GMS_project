@@ -5,6 +5,7 @@
       <title>Dashboard</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
       <link rel="stylesheet" href="/css/dashboard.css">
+      <link rel="stylesheet" href="/css/layout.css">
       <span style="font-family: verdana, geneva, sans-serif;">
     </head>
     <body>
@@ -19,7 +20,7 @@
             @endif
 
             <div class="dashboard-container">
-                <nav>
+                <nav class="side-menu">
                 <ul>
                     <li><a href="{{ route('dashboard.index') }}" class="logo">
                     <img src="/logo.png" alt="">
@@ -37,7 +38,7 @@
                     <i class="fas fa-user"></i>
                     <span class="nav-item">Khách hàng</span>
                     </a></li>
-                    <li><a href=" {{ route('booking.index') }}">
+                    <li><a href="">
                     <i class="fas fa-calendar-alt"></i>
                     <span class="nav-item">Lịch hẹn</span>
                     </a></li>
@@ -61,9 +62,13 @@
                     <i class="fas fa-id-badge"></i>
                     <span class="nav-item">Nhân viên</span>
                     </a></li>
-                    <li><a href="{{ route('order.index') }}">
-                    <i class="fas fa-order-alt"></i>
+                    <li><a href=" {{route('order.index')}}">
+                    <i class="fas fa-id-badge"></i>
                     <span class="nav-item">Đơn hàng</span>
+                    </a></li>
+                    <li><a href="" class="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="nav-item">Log out</span>
                     </a></li>
                 </ul>
                 </nav>
