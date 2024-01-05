@@ -7,6 +7,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CarController;
 
 
 
@@ -33,7 +34,7 @@ Route::prefix('employee')->name('employee.')->group(function ()
 	Route::get('/',[EmployeeController::class,'index']) ->name('index');
 	Route::get('/add',[EmployeeController::class, 'getAdd']) ->name('getAdd');	
 	Route::post('/add', [EmployeeController::class, 'postAdd'])->name('postAdd');
-	Route::get('/edit/{id}', [EmployeeController::class, 'getEdit'])->name('getEdit');
+	Route::get('/edit/{id}', [EmployeeController::class, 'getEdit'])->name('getEdit');	
 	Route::post('/edit/{id}', [EmployeeController::class, 'postEdit'])->name('postEdit');
 	Route::get('delete/{id}', [EmployeeController::class, 'delete'])->name('delete');
 	Route::get('/get-positions/{id}', [EmployeeController::class, 'getPositionsByDepartment']);
@@ -70,11 +71,7 @@ Route::prefix('customercp')->name('customercp.booking.')->group(function()
 Route::post('booking/add', [BookingController::class, 'postAdd']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/home/customer', CustomerController::class);
-Route::resource('/home/job', JobController::class);
-Route::resource('/home/dashboard', DashboardController::class);
-
-
+Route::get('/home/customer', [App\Http\Controllers\CustomerController::class, 'index'])->name('customer.index');
 
 // Route::resource('/home/customer', [App\Http\Controllers\CustomerController::class]);
 Route::get('/customer-create', [App\Http\Controllers\CustomerController::class, 'create'])->name('customer.create');
@@ -83,3 +80,12 @@ Route::get('/customer-create', [App\Http\Controllers\CustomerController::class, 
 Route::get('/home/hoa-don', function () {
     return view('hoa-don');
 });
+
+Route::get('/car', [CarController::class, 'index'])->name('car.index');
+Route::get('/car_create', [CarController::class, 'create'])->name('car.create');
+Route::post('/car_store',[CarController::class, 'store'])->name('car.store');
+Route::post('/car_destroy',[CarController::class, 'destroy'])->name('car.destroy');
+Route::get('/car_edit', [CarController::class, 'update'])->name('car.edit');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/job', [JobController::class, 'index'])->name('job.index');

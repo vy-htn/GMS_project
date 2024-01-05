@@ -49,7 +49,7 @@
                     <i class="fas fa-cog"></i>
                     <span class="nav-item">Phụ tùng</span>
                     </a></li>
-                    <li><a href="">
+                    <li><a href="{{ route('car.index') }}">
                     <i class="fas fa-car-alt"></i>
                     <span class="nav-item">Xe</span>
                     </a></li>
