@@ -28,6 +28,10 @@ class HomeController extends Controller
     }
 
     public function admin() {
-        
+        if (Gate::allows('is_admmin')) {
+            return view('admin');
+        } else {
+            return view('home');
+        }
     }
 }
