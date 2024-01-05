@@ -161,7 +161,11 @@ class OrderController extends Controller
                 'order_id' => $lastOrderId,
             ];
 
-            $this->accessaries->updateQuantity($key, $quantity);
+            $curQuantity = $this->accessaries->getQuantity($key);
+
+            $updatedQuantity = intval($quantity) + $curQuantity[0]->QUANTITY;
+
+            $this->accessaries->updateQuantity($key, $updatedQuantity);
 
             $this->orderDetails->addOrderDetail($dataOrderDetailInsert);
             
@@ -181,7 +185,7 @@ class OrderController extends Controller
                 $deleteOrderStatus = $this->orders->deleteOrder($id);
 
 
-                if ($deleteDetailStatus &&  $deleteOrderStatus) {
+                if ($deleteDetailStatus ||  $deleteOrderStatus) {
                     $msg = 'Xóa dữ liệu thành công';
                 } else {
                     $msg = 'Không thể xoá dữ liệu, vui lòng thử lại sau';

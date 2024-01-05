@@ -10,8 +10,6 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\AccessaryController;
-use App\Models\Accessary;
-use App\Models\Car;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +29,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::prefix('employee')->name('employee.')->group(function ()
 {
 	Route::get('/',[EmployeeController::class,'index']) ->name('index');

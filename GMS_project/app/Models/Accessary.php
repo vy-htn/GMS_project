@@ -93,4 +93,9 @@ class Accessary extends Model
        ]);
     }
 
+    public function getQuantity($id) {
+        $curQuantity = DB::select('SELECT QUANTITY FROM ACCESSARY WHERE ID = ?', [$id]);
+        return $curQuantity;
+    }
+
 }

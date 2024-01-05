@@ -43,8 +43,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-    public function getRole($userId) {
-        return DB::select('SELECT ROLE FROM USERS WHERE ID = ?', $userId);
-    }
 }

@@ -25,7 +25,7 @@
                     <span class="nav-item">Job </span>
                     </a></li>
                     <li><a href="#">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-money-bill"></i>
                     <span class="nav-item">Hóa đơn</span>
                     </a></li>
                     <li><a href="{{ route('customer.index') }}">
@@ -52,17 +52,15 @@
                     <i class="fas fa-user-tie"></i>
                     <span class="nav-item">Nhà cung cấp</span>
                     </a></li>
+                    @if(auth()->check() && auth()->user()->is_admin)
                     <li><a href=" {{route('employee.index')}}">
                     <i class="fas fa-id-badge"></i>
                     <span class="nav-item">Nhân viên</span>
                     </a></li>
+                    @endif
                     <li><a href=" {{route('order.index')}}">
-                    <i class="fas fa-id-badge"></i>
+                    <i class="fas fa-truck-loading"></i>
                     <span class="nav-item">Đơn hàng</span>
-                    </a></li>
-                    <li><a href="" class="logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span class="nav-item">Log out</span>
                     </a></li>
                 </ul>
                 </nav>

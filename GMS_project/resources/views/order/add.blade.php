@@ -79,42 +79,11 @@
 
                             <div class="col-md-3">
 
-                                <div class="border border-2">
-
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Tóm tắt đơn hàng</td>
-                                                <th scope="col"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td scope="row">Thuế</td>
-                                                <td>$10</td>
-                                            </tr>
-                                            <tr>
-                                                <td scope="row">Tổng</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td scope="row">Tổng số lượng</td>
-                                                <td id="totalQuantity"></td>
-                                            </tr>
-                                            <tr>
-                                                <td scope="row">Tổng chi phí</td>
-                                                <td>$10</td>
-
-                                            </tr>
-                                            
-                                        </tbody>
-                                    </table>
-
                                     <div class="d-grid gap-2 col-10 mx-auto">
                                         <button class="btn btn-info" type="submit">Xác nhận</button>
                                     </div>
 
-                                </div>
+                             
 
 
                             </div>
