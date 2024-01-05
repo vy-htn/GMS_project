@@ -20,13 +20,8 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container row">
-                <div class="col-1"></div>
-                <div class="col-8"><h2>Dịch vụ gara</h2></div>
-                <div class="col-3 row">
-                    <a class="col-6" href="">Đăng nhập</a>
-                    <a class="col-6" href="">Đăng ký</a>
-                </div>
+            <div class="container">
+                <div class=""><h2>Dịch vụ gara</h2></div>
             </div>
         </nav>
 
@@ -38,7 +33,7 @@
                 <br>
                 <div class="row">
                     <div class="col-2"></div>
-                    <a href="{{route('customercp.booking.getAdd')}}" class="col-6 btn btn-lg btn-outline-light">Đặt hẹn ngay</a>
+                    <a href="{{route('customercp.booking.gmail')}}" class="col-6 btn btn-lg btn-outline-light">Đặt hẹn ngay</a>
                 </div>
             </div>
             </div>

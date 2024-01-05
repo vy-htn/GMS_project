@@ -94,7 +94,7 @@ class Employee extends Model
             EMAIL = ?,
             PHONE_NUMBER = ?,
             ADDRESS = ?
-        WHERE EMPLOYEE_ID = ?', $data);
+        WHERE ID = ?', $data);
     }
 
     public function deleteEmployee($id) {

@@ -92,11 +92,11 @@
                             <div class="col-md-6">
                                 <h3 class="card-title">{{$bookingDetail->model}}</h3>
                                 <h6 class="card-subtitle mb-2 text-muted">{{$bookingDetail->production_year}}</h6>
-                                <p>{{$bookingDetail->model}}</p>
+                                <p>{{$bookingDetail->brand}}</p>
                                 <div class="row">
                                     <div class="col-md-2"></div>
 
-                                    <button type="button" class="btn btn-outline-dark col-md-8 btn-sm ">Chi tiết</button>
+                                    <a href="{{route('car.getDetail',['id'=>$bookingDetail->car_id])}}" class="btn btn-outline-dark col-md-8 btn-sm ">Chi tiết</a>
                                 </div>
 
                             </div>
@@ -125,13 +125,9 @@
 
                 <div class="col-md-6 mb-3">
                     <label for="inputPhoneNumber" class="form-label">Số điện thoại</label>
-                    <input type="text" readonly class="form-control" id="inputPhoneNumber" value="{{$bookingDetail->phone_number}}">
+                    <input type="text" readonly class="form-control" id="inputPhoneNumber" value="{{$bookingDetail->phone}}">
                 </div>
 
-                <div class="col-md-12 mb-3">
-                    <label for="inputAddress" class="form-label">Địa chỉ</label>
-                    <input type="text" readonly class="form-control" id="inputAddress" value="{{$bookingDetail->address}}">
-                </div>
             </div>
         </div>
 

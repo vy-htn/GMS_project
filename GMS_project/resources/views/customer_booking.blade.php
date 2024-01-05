@@ -24,11 +24,10 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container row">
                 <div class="col-1"></div>
-                <div class="col-8"><h2>Dịch vụ gara</h2></div>
-                <div class="col-3 row">
-                    <a class="col-6" href="">Đăng nhập</a>
-                    <a class="col-6" href="">Đăng ký</a>
-                </div>
+                <div class="col-9" ><h2>Dịch vụ gara</h2></div>
+              
+                <div class="col-4" href=""></div>
+               
             </div>
         </nav>
 
@@ -46,6 +45,18 @@
             <br>
             <h4 class="card-title">Đặt lịch hẹn</h4>
             <div class="card-body row">
+                <div class="nav-tabs col-md-3">
+                    <label for="customerId" class="form-label">Mã KH</label>
+                    <input type="text" name="customerId" class="form-control" readonly id="customerId" value="{{ $customer->id }}">
+                    <br>
+                </div>
+                
+                <div class="nav-tabs col-md-9">
+                    <label for="customerName" class="form-label">Tên khách hàng</label>
+                    <input type="text" name="customerName" class="form-control" readonly  id="customerName" value="{{ $customer->name }}">
+                    <br>
+                </div>
+
                 <div class="nav-tabs col-md-12">
                     <label for="inputDate" class="form-label">Chọn ngày hẹn dịch vụ</label>
                     <input type="date" name="booking_date" class="form-control" id="inputDate">
@@ -77,12 +88,18 @@
 
                 <div class="nav-tabs col-md-12">
                     <br>
-                    <label for="inputCar" class="form-label">Chọn xe</label>
+                    <label for="car" class="form-label">Xe</label>
                     <select class="form-select" name="car" aria-label="Default select example">
-
+                        @foreach ($carList as $key) 
+                        <option value="{{$key->id}}" >{{$key->model}}</option>
+                        @endforeach
                     </select>
+                    @error('service_type')
+                    <span style="color: red;">{{$message}}</span>
+                    @enderror
                     <br>
                 </div>
+
 
                 <div class="nav-tabs col-md-12">
                     <br>

@@ -12,6 +12,7 @@ use App\Models\Booking;
 use App\Models\Customer;
 use App\Models\BookingStatus;
 use App\Models\ServiceType;
+use App\Models\Car;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -23,6 +24,8 @@ class BookingController extends Controller
 
     private $bookingStatuses;
     private $serviceTypes;
+    private $customers;
+    private $cars;
     private $buttonUpdateDisplays = [];
 
     public function __construct()
@@ -30,6 +33,8 @@ class BookingController extends Controller
         $this->bookingStatuses = new BookingStatus();
         $this->bookings = new Booking();
         $this->serviceTypes = new ServiceType();
+        $this->customers = new Customer;
+        $this->cars = new Car;
     }
     public function index(Request $request) {
 
@@ -140,8 +145,33 @@ class BookingController extends Controller
         return redirect()->route('booking.index')->with('msg', 'Từ chối lịch hẹn thành công');
     }
 
-    public function getAdd() {
+    public function getAdd(Request $request) {
+        $request->validate([
+            'email' => 'required'
+        ],[
+            'email.required' => 'Vui lòng nhập gmail'
+        ]);
+
+        $email = $request->email;
+
+        if (empty($email)) {
+            return redirect()->route('customercp.booking.gmail')->with('msg, Vui lòng nhập email');
+        }
+
+        $customer = $this->customers->getByEmail($email);
+
+    
+
+        if (empty($customer)) {
+            return redirect()->route('customercp.booking.gmail')->with('msg, Email này chưa được đăng ký');
+        }
+
+        $customer = $customer[0];
+
         $serviceTypeList = $this->serviceTypes->getAllServiceTypes();
+
+        $carList = $this->cars->getByCustomerId($customer->id);
+
         $bookingHours = [
             '07:30',
             '08:00',
@@ -163,7 +193,7 @@ class BookingController extends Controller
             '17:00'
         ];
 
-        return view("customer_booking", compact('bookingHours', 'serviceTypeList'));
+        return view("customer_booking", compact('bookingHours', 'serviceTypeList', 'customer', 'carList'));
     }
 
     public function postAdd(BookingRequest $request ){
@@ -174,8 +204,7 @@ class BookingController extends Controller
 
         $lastBooking = $this->bookings->getLastBooking();
 
-        
-
+    
         if (!empty($lastBooking)) {
 
             $lastBooking = $lastBooking[0];
@@ -208,12 +237,17 @@ class BookingController extends Controller
             'booking_created' => $createdDate,
             'type_id' => $request->service_type,
             'booking_note' => $request->booking_note,
-            'customer_id' => 1,
+            'customer_id' => $request->customerId,
+            'car_id' => $request->car,
             'status_id' => 1,
-            'car_id' =>1
         ];
 
         $this->bookings->addBooking($dataInsert);
         return redirect()->route('customercp.booking.getAdd')->with('msg', 'Đặt lịch hẹn thành công');
     }
+
+    public function bookingGmail() {
+        return view('customer_gmail');   
+    }
+
 }

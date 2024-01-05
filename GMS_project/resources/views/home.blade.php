@@ -38,7 +38,7 @@
                     <i class="fas fa-user"></i>
                     <span class="nav-item">Khách hàng</span>
                     </a></li>
-                    <li><a href="">
+                    <li><a href="{{ route('booking.index') }}">
                     <i class="fas fa-calendar-alt"></i>
                     <span class="nav-item">Lịch hẹn</span>
                     </a></li>
@@ -50,7 +50,7 @@
                     <i class="fas fa-cog"></i>
                     <span class="nav-item">Phụ tùng</span>
                     </a></li>
-                    <li><a href="">
+                    <li><a href="{{ route('car.index') }}">
                     <i class="fas fa-car-alt"></i>
                     <span class="nav-item">Xe</span>
                     </a></li>
