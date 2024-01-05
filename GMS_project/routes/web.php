@@ -8,6 +8,9 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\AccessaryController;
+use App\Models\Accessary;
 use App\Models\Car;
 
 /*
@@ -77,6 +80,26 @@ Route::prefix('car')->name('car.')->group(function()
 	Route::get('/detail/{id}',[CarController::class,'getDetail'])->name('getDetail');
 	Route::post('/detail/{id}', [CarController::class, 'postDetail'])->name('postDetail');
 	Route::get('/delete/{id}',[CarController::class,'Delete'])->name('Delete');
+});
+
+Route::prefix('supplier')->name('supplier.')->group(function()
+{
+	Route::get('/',[SupplierController::class,'index'])->name('index');
+	Route::get('/add',[SupplierController::class, 'getAdd'])->name('getAdd');
+	Route::post('/add',[SupplierController::class, 'postAdd'])->name('postAdd');			
+	Route::get('/detail/{id}',[SupplierController::class,'getDetail'])->name('getDetail');
+	Route::post('/detail/{id}', [SupplierController::class, 'postDetail'])->name('postDetail');
+	Route::get('/delete/{id}',[SupplierController::class,'Delete'])->name('delete');
+});
+
+Route::prefix('accessary')->name('accessary.')->group(function()
+{
+	Route::get('/',[AccessaryController::class,'index'])->name('index');
+	Route::get('/add',[AccessaryController::class, 'getAdd'])->name('getAdd');
+	Route::post('/add',[AccessaryController::class, 'postAdd'])->name('postAdd');			
+	Route::get('/detail/{id}',[AccessaryController::class,'getDetail'])->name('getDetail');
+	Route::post('/detail/{id}', [AccessaryController::class, 'postDetail'])->name('postDetail');
+	Route::get('/delete/{id}',[AccessaryController::class,'delete'])->name('delete');
 });
 
 Route::prefix('customercp')->name('customercp.booking.')->group(function()

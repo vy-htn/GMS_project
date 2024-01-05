@@ -22,6 +22,12 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             PositionSeeder::class,
             EmployeeSeeder::class,
+            CustomerSeeder::class,
+            SupplierSeeder::class,
+            ServiceTypeSeeder::class,
+            CarSeeder::class,
+            OrderSeeder::class,
+            BookingSeeder::class,
         ]);
     }
 }

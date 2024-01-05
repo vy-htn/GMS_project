@@ -11,15 +11,8 @@
 
 <body>
     <div class="container">
-        
-   
-    @if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-    </div>
-    @endif
         <div class="main-top">
-            <h1>Thêm nhà cung cấp</h1>
+            <h1>Chi tiết nhà cung cấp</h1>
             <i class="fas fa-user-cog"></i>
         </div>
         <div class="main-content">
@@ -32,7 +25,7 @@
 
                 <div class="col-md-6">
                     <label for="name" class="form-label">Tên nhà cung cấp</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên nhà cung cấp..." value="{{old('name')}}">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên nhà cung cấp..." value="{{$supplierDetail -> name}}">
                     @error('employee_firstname')
                     <span style="color: red;">{{$message}}</span>
                     @enderror
@@ -44,21 +37,21 @@
 
                 <div class="col-md-6">
                     <label for="inputEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Nhập email..." value="{{old('email')}}">
+                    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Nhập email..." value="{{$supplierDetail -> email}}">
                     @error('employee_email')
                     <span style="color: red;">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="col-md-6">
                     <label for="phone" class="form-label">Số điện thoại</label>
-                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Nhập số điện thoại..." value="{{old('phone')}}">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Nhập số điện thoại..." value="{{$supplierDetail -> phone}}">
                     @error('employee_phonenumber')
                     <span style="color: red;">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="col-12">
                     <label for="address" class="form-label">Địa chỉ</label>
-                    <input type="text" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ..." value="{{old('address')}}">
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ..." value="{{$supplierDetail -> address}}">
                     @error('employee_address')
                     <span style="color: red;">{{$message}}</span>
                     @enderror
@@ -86,5 +79,4 @@
 @endsection
 
 @section('js')
-
 @endsection
