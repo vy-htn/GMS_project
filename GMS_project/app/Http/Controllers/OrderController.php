@@ -81,11 +81,11 @@ class OrderController extends Controller
     public function getAdd()
     {
       
-        $supplierList = $this->suppliers->getAllSupplier();
+        $supplierList = $this->suppliers->getAllSupplier([], "");
 
         $accessaryTypeList = $this->accessaryTypes->getAllAccessaryType();
 
-        $accessaryList = $this->accessaries->getAllAccessary();
+        $accessaryList = $this->accessaries->getAllAccessary([], "");
         
         return view("order/add", compact('accessaryList', 'accessaryTypeList', 'supplierList'));
     }
@@ -121,33 +121,6 @@ class OrderController extends Controller
         $data = $request->all();
 
         $createdDate = Carbon::today();
-
-        // $createdDate = substr($createdDate, 0, 10);
-
-        // $lastOrder = $this->orders->getLastOrder();
-
-        // if (!empty($lastOrder)){
-        //     $lastOrder = $lastOrder[0];
-
-        //     $lastOrderId = $lastOrder->id;
-
-        //     $lastOrderNumber = intval($lastOrderId) % 10000;
-
-        //     $lastOrderDate = $lastOrder->created_at;        
-
-        //     if ($lastOrderDate == $createdDate) {
-        //             $autoIncrementPart = str_pad($lastOrderNumber + 1, 4, '0', STR_PAD_LEFT);
-        //     } else {
-        //         $autoIncrementPart = str_pad(0, 4, '0', STR_PAD_LEFT);
-        //     }
-
-        // } else {
-        //     $autoIncrementPart = str_pad(0, 4, '0', STR_PAD_LEFT);
-        // }
-
-        // $createdDateArr = $this->dateStringToArr($createdDate);
-
-        // $autoId = substr($createdDateArr['year'] , 2, 4) .  $createdDateArr['month'] . $createdDateArr['day'] . $autoIncrementPart;      
 
         $orderDetails = array_slice($data, 4, null, true);
 
@@ -188,11 +161,13 @@ class OrderController extends Controller
                 'order_id' => $lastOrderId,
             ];
 
+            $this->accessaries->updateQuantity($key, $quantity);
+
             $this->orderDetails->addOrderDetail($dataOrderDetailInsert);
             
         }
 
-        return redirect()->route('order.index')->with('msg', 'Thêm đơn hàng thành công');
+        return redirect()->route('order.index')->with('status', 'Thêm đơn hàng thành công');
     }
 
     public function delete($id=0) {
@@ -218,7 +193,7 @@ class OrderController extends Controller
             $msg = 'Liên kết không tồn tại';
         }
 
-        return redirect()->route('order.index')->with('msg', $msg);
+        return redirect()->route('order.index')->with('status', $msg);
     }
 
     public function getEdit($id = 0)
@@ -236,10 +211,10 @@ class OrderController extends Controller
 
                 $supplierName = $orderDetail->supplier_name;
             } else {
-                return redirect()->route('order.index')->with('msg, Nhân viên đã chọn không tồn tại');
+                return redirect()->route('order.index')->with('status', 'Đơn hàng đã chọn không tồn tại');
             }
         } else {
-            return redirect()->route('order.index')->with('msg', 'Liên kết không tồn tại');
+            return redirect()->route('order.index')->with('status', 'Liên kết không tồn tại');
         }
 
         return view("order.detail", compact('orderDetail', 'importDateString', 'orderDetailList', 'supplierName'));

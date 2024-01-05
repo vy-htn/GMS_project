@@ -4,28 +4,18 @@
 
     <div class="container">
         <div class="main-top">
-            <h1>Danh sách nhân viên</h1>
+            <h1>Danh sách nhà cung cấp</h1>
             <i class="fas fa-user-cog"></i>
         </div>
 
         <div class="main-skills">
 
-                <form action=" {{ route('employee.index') }} " class="content" method="GET">
+                <form action=" {{ route('supplier.index') }} " class="content" method="GET">
                     @csrf
                     @error('msg')
                     <div class="alert alert-danger text-center">{{$message}}</div>
                     @enderror
                     <div class="overflow-hidden mb-3 row">
-                        <div class="col-2">
-                        <select class="form-select form-select-sm col" name="department" aria-label=".form-select-sm example">
-                            <option value="0">Tất cả bộ phận</option>
-                            @if (!empty($departmentList))
-                            @foreach ($departmentList as $key)
-                            <option value="{{ $key->id }}" {{ request() -> department == $key->id ? 'selected':false}}>{{ $key->name }}</option>
-                            @endforeach
-                            @endif
-                        </select>
-                        </div>
                         <div class="col-5">
                             <input class="form-control col" name="keywords" type="search" placeholder="Tìm lịch hẹn" aria-label="Search">
                         </div>
@@ -35,7 +25,7 @@
                         </div>
 
                         <div class="col">
-                    <a href="{{route('employee.getAdd')}}" class="btn btn-info btn-sm">+ Thêm nhân viên</a>
+                    <a href="{{route('supplier.getAdd')}}" class="btn btn-info btn-sm">+ Thêm nhà cung cấp</a>
                 </div>
 
                     </div>
@@ -49,35 +39,32 @@
                             <tr>
                             <th scope="col" class="text-center">#</th>
                             <th scope="col">Tên</th>
-                            <th scope="col" class="text-center">Bộ phận</th>
-                            <th scope="col" class="text-center">Vị trí</th>
-                            <th scope="col" class="text-center">Số điện thoại</th>
                             <th scope="col" class="text-center">Email</th>
+                            <th scope="col" class="text-center">Số điện thoại</th>                    
                             <th scope="col"></th>
                             <th scope="col"></th>
                             </tr>
                         </thead>
-                        @if (!empty($employeesList))
+                        @if (!empty($suppliersList))
                         <tbody class="table-group-divider table_body">
 
-                            @foreach ($employeesList as $key)
+                            @foreach ($suppliersList as $key)
                             <tr>
-                            <th scope="row" class="text-center">{{$key->employee_id}}</th>
+                            <th scope="row" class="text-center">{{$key->id}}</th>
                             <!-- <td>Image</td> -->
-                            <td>{{$key->first_name}} {{$key->last_name}}</td>
-                            <td class="text-center">{{$key->department_name}}</td>
-                            <td class="text-center">{{$key->position_name}}</td>
-                            <td class="text-center">{{$key->phone_number}}</td>
+                            <td>{{$key->name}}</td>
                             <td class="text-center">{{$key->email}}</td>
-                            <td><a href="{{route('employee.getEdit',['id'=>$key->employee_id])}}"><i class="fas fa-edit" style="color: #96d35f;"></i></a></td>
-                            <td><a onclick="return confirm('Bạn có chắc chắn muốn xoá dữ liệu nhân viên này không')" href="{{route('employee.delete',['id'=>$key->employee_id])}}" class="text-center"><i class="fas fa-user-minus" style="color: #ff2600;"></i></a></td>
+                            <td class="text-center">{{$key->phone}}</td>
+                          
+                            <td><a href="{{route('supplier.getDetail',['id'=>$key->id])}}"><i class="fas fa-edit" style="color: #96d35f;"></i></a></td>
+                            <td><a onclick="return confirm('Bạn có chắc chắn muốn xoá dữ liệu nhân viên này không')" href="{{route('supplier.delete',['id'=>$key->id])}}" class="text-center"><i class="fas fa-user-minus" style="color: #ff2600;"></i></a></td>
                             </tr>
                             @endforeach
 
                         </tbody>
                         @else
 
-                        <h4 class="text-center">Không có lịch hẹn nào để hiển thị</h4>
+                        <h4 class="text-center">Không có nhà cung cấp nào để hiển thị</h4>
 
                         @endif
 
@@ -86,25 +73,20 @@
 
 
 
-                    @if (!empty($employeesList ->links()))
+                    @if (!empty($suppliersList ->links()))
 
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
-                            <!-- Trang trước -->
-                            <li class="page-item {{ $employeesList ->previousPageUrl() ? '' : 'disabled' }}">
-                                <!-- <a class="page-link" href="{{ $employeesList  ->previousPageUrl() }}" aria-label="Previous">
-                                                    <span aria-hidden="true">&laquo;</span>
-                                                </a> -->
+                        
+                            <li class="page-item {{ $suppliersList ->previousPageUrl() ? '' : 'disabled' }}">
+                               
                             </li>
 
-                            <!-- Các trang -->
-                            {{ $employeesList  ->onEachSide(1)->links('pagination::bootstrap-4') }}
+                           
+                            {{ $suppliersList  ->onEachSide(1)->links('pagination::bootstrap-4') }}
 
-                            <!-- Trang tiếp theo -->
-                            <li class="page-item {{ $employeesList  ->nextPageUrl() ? '' : 'disabled' }}">
-                                <!-- <a class="page-link" href="{{ $employeesList  ->nextPageUrl() }}" aria-label="Next">
-                                                    <span aria-hidden="true">&raquo;</span>
-                                                </a> -->
+                            <li class="page-item {{ $suppliersList  ->nextPageUrl() ? '' : 'disabled' }}">
+                                
                             </li>
                         </ul>
                     </nav>

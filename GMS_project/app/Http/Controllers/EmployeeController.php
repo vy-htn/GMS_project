@@ -110,7 +110,7 @@ class EmployeeController extends Controller
 
         $this->employees->addEmployee($dataInsert);
 
-        return redirect()->route('employee.index')->with('msg', 'Thêm mới nhân viên thành công');
+        return redirect()->route('employee.index')->with('status', 'Thêm mới nhân viên thành công');
     }
 
     public function getEdit($id = 0)
@@ -153,7 +153,7 @@ class EmployeeController extends Controller
 
         $this->employees->updateEmployee($dataUpdate, $id);
 
-        return redirect()->route('employee.index')->with('msg', 'Cập nhật thông tin nhân viên thành công');
+        return redirect()->route('employee.index')->with('status', 'Cập nhật thông tin nhân viên thành công');
     }
 
     public function getPositionsByDepartment($departmentId)
@@ -187,6 +187,6 @@ class EmployeeController extends Controller
 
 
 
-        return redirect()->route('employee.index')->with('msg', $msg);
+        return redirect()->route('employee.index')->with('status', $msg);
     }
 }

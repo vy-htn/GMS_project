@@ -12,12 +12,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12-lg">
-            
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
 
             <div class="dashboard-container">
                 <nav class="side-menu">
@@ -46,7 +40,7 @@
                     <i class="fas fa-chart-bar"></i>
                     <span class="nav-item">Dịch vụ</span>
                     </a></li>
-                    <li><a href="">
+                    <li><a href="{{ route('accessary.index') }}">
                     <i class="fas fa-cog"></i>
                     <span class="nav-item">Phụ tùng</span>
                     </a></li>
@@ -54,7 +48,7 @@
                     <i class="fas fa-car-alt"></i>
                     <span class="nav-item">Xe</span>
                     </a></li>
-                    <li><a href="#">
+                    <li><a href="{{ route('supplier.index') }}">
                     <i class="fas fa-user-tie"></i>
                     <span class="nav-item">Nhà cung cấp</span>
                     </a></li>
@@ -74,6 +68,12 @@
                 </nav>
             
                 <section class="main">
+                @if (session('status'))
+                <div class="alert alert-success text-center" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+
                 @yield('main-content')
                
                 </section>

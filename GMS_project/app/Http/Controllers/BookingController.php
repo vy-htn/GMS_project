@@ -108,10 +108,10 @@ class BookingController extends Controller
             if (!empty($bookingDetail[0])) {
                 $bookingDetail = $bookingDetail[0];
             } else {
-                return redirect()->route('employee.index')->with('msg, Lịch hẹn đã chọn không tồn tại');
+                return redirect()->route('employee.index')->with('status', 'Lịch hẹn đã chọn không tồn tại');
             }
         } else {
-            return redirect()->route('employee.index')->with('msg', 'Liên kết không tồn tại');
+            return redirect()->route('employee.index')->with('status', 'Liên kết không tồn tại');
         }
 
         return view('booking.detail', compact('bookingDetail' , 'createdDate', 'bookingDate', 'buttonDisplay', 'bookingTime'));
@@ -131,18 +131,18 @@ class BookingController extends Controller
             if (!empty($bookingDetail[0])) {
                 $bookingDetail = $bookingDetail[0];
             } else {
-                return redirect()->route('booking.index')->with('msg, Lịch hẹn đã chọn không tồn tại');
+                return redirect()->route('booking.index')->with('status', 'Lịch hẹn đã chọn không tồn tại');
             }
         } else {
-            return redirect()->route('booking.index')->with('msg', 'Liên kết không tồn tại');
+            return redirect()->route('booking.index')->with('status', 'Liên kết không tồn tại');
         }
 
-        return redirect()->route('booking.index')->with('msg', 'Cập nhật trạng thái thành công');
+        return redirect()->route('booking.index')->with('status', 'Cập nhật trạng thái thành công');
     }
 
     public function Cancel($id) {
         $this->bookings->updateStatus(6, $id);
-        return redirect()->route('booking.index')->with('msg', 'Từ chối lịch hẹn thành công');
+        return redirect()->route('booking.index')->with('status', 'Từ chối lịch hẹn thành công');
     }
 
     public function getAdd(Request $request) {
@@ -155,7 +155,7 @@ class BookingController extends Controller
         $email = $request->email;
 
         if (empty($email)) {
-            return redirect()->route('customercp.booking.gmail')->with('msg, Vui lòng nhập email');
+            return redirect()->route('customercp.booking.gmail')->with('status', 'Vui lòng nhập email');
         }
 
         $customer = $this->customers->getByEmail($email);
@@ -163,7 +163,7 @@ class BookingController extends Controller
     
 
         if (empty($customer)) {
-            return redirect()->route('customercp.booking.gmail')->with('msg, Email này chưa được đăng ký');
+            return redirect()->route('customercp.booking.gmail')->with('status', 'Email này chưa được đăng ký');
         }
 
         $customer = $customer[0];

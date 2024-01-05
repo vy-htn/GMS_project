@@ -12,9 +12,7 @@
 
                 <form action=" {{ route('employee.index') }} " class="content" method="GET">
                     @csrf
-                    @error('msg')
-                    <div class="alert alert-danger text-center">{{$message}}</div>
-                    @enderror
+                    
                     <div class="overflow-hidden mb-3 row">
                         <div class="col-2">
                         <select class="form-select form-select-sm col" name="department" aria-label=".form-select-sm example">
@@ -25,7 +23,9 @@
                             @endforeach
                             @endif
                         </select>
+                        
                         </div>
+                        
                         <div class="col-5">
                             <input class="form-control col" name="keywords" type="search" placeholder="Tìm lịch hẹn" aria-label="Search">
                         </div>
@@ -40,9 +40,9 @@
 
                     </div>
 
-                    <!-- @if (session('msg'))
-                                <div class="alert alert-success text-center">{{session('msg')}}</div>
-                                @endif -->
+                        @error('status')
+                        <div class="alert alert-danger text-center">{{$message}}</div>
+                        @enderror
 
                     <table class="tb mb-3 rounded-2">
                         <thead class="table_header ">
