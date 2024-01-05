@@ -23,11 +23,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('accessary', function (Blueprint $table) {
-            $table->dropForeign('booking_accessary_supplier_id_foreign');
-            $table->dropForeign('booking_accessary_accessary_type_id_foreign');
+            $table->dropForeign('accessary_supplier_id_foreign');
+            $table->dropForeign('accessary_type_id_foreign');
             
             $table->dropColumn(['supplier_id']);
-            $table->dropColumn(['accessary_id']);
+            $table->dropColumn(['type_id']);
         });
     }
 };

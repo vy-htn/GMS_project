@@ -15,10 +15,10 @@ class Booking extends Model
     public function getAllBooking($filters = [], $keywords) {
         $bookings =  DB::table('booking')
         ->join('car', 'car.id', '=', 'booking.car_id')
-        ->join('customer', 'customer.id', '=', 'booking.customer_id')
+        ->join('customers', 'customers.id', '=', 'booking.customer_id')
         ->join('service_type', 'service_type.id', '=', 'booking.type_id')
         ->join('booking_status', 'booking_status.id', '=', 'booking.status_id')
-        ->select('booking.id as booking_id', 'booking.created_at as booking_created', 'booking.time', 'booking.date', 'booking.note', 'customer.name as customer_name', 'booking_status.id as status_id', 'booking_status.name as status_name', 'car.model', 'car.color');
+        ->select('booking.id as booking_id', 'booking.created_at as booking_created', 'booking.time', 'booking.date', 'booking.note', 'customers.name as customer_name', 'booking_status.id as status_id', 'booking_status.name as status_name' , 'car.model', 'car.color');
 
         if (!empty($filters)) {
             $filters = $filters[0];
@@ -27,7 +27,7 @@ class Booking extends Model
 
         if (!empty($keywords)) {
             $bookings = $bookings->where(function($query) use ($keywords) {
-                $query->orWhere('customer.name', 'like', '%'.$keywords.'%');
+                $query->orWhere('customers.name', 'like', '%'.$keywords.'%');
                 $query->orWhere('car.model', 'like', '%'.$keywords.'%');
             });
         }
@@ -60,14 +60,14 @@ class Booking extends Model
     public function getDetail($id) {
         return DB::table('booking')
         ->join('car', 'car.id', '=', 'booking.car_id')
-        ->join('customer', 'customer.id', '=', 'booking.customer_id')
+        ->join('customers', 'customers.id', '=', 'booking.customer_id')
         ->join('service_type', 'service_type.id', '=', 'booking.type_id')
         ->join('booking_status', 'booking_status.id', '=', 'booking.status_id')
         ->select('booking.id as booking_id', 'booking.created_at as booking_created',
-        'booking.time', 'booking.date', 'booking.note', 'customer.name as customer_name',
-        'booking_status.id as status_id', 'booking_status.name as status_name', 'car.model', 
-        'car.color', 'production_year', 'service_type.name as type_name', 'customer.email', 
-        'customer.phone_number', 'customer.address')
+        'booking.time', 'booking.date', 'booking.note', 'customers.name as customer_name',
+        'booking_status.id as status_id', 'booking_status.name as status_name','car.id as car_id', 'car.model', 'car.brand', 
+        'car.color', 'production_year', 'service_type.name as type_name', 'customers.email', 
+        'customers.phone')
         ->where('booking.id', '=', $id) 
         ->get();
     }
