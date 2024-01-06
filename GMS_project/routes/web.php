@@ -101,9 +101,9 @@ Route::prefix('accessary')->name('accessary.')->group(function()
 	Route::get('/delete/{id}',[AccessaryController::class,'delete'])->name('delete');
 });
 
-Route::prefix('customercp')->name('customercp.booking.')->group(function()
+Route::prefix('garagebooking')->name('garagebooking.')->group(function()
 {
-	Route::get('/mainpage', function () {
+	Route::get('/', function () {
 		return view('customer_mainpage');
 	});
 

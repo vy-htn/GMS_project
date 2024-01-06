@@ -14,6 +14,7 @@ use App\Models\BookingStatus;
 use App\Models\ServiceType;
 use App\Models\Car;
 
+use function Laravel\Prompts\alert;
 use function PHPUnit\Framework\isEmpty;
 
 class BookingController extends Controller
@@ -34,7 +35,7 @@ class BookingController extends Controller
         $this->bookings = new Booking();
         $this->serviceTypes = new ServiceType();
         $this->customers = new Customer;
-        $this->cars = new Car;
+        $this->cars = new Car();
     }
     public function index(Request $request) {
 
@@ -155,7 +156,7 @@ class BookingController extends Controller
         $email = $request->email;
 
         if (empty($email)) {
-            return redirect()->route('customercp.booking.gmail')->with('status', 'Vui lòng nhập email');
+            return redirect()->route('garagebooking.gmail')->with('msg', 'Vui lòng nhập email');
         }
 
         $customer = $this->customers->getByEmail($email);
@@ -163,7 +164,7 @@ class BookingController extends Controller
     
 
         if (empty($customer)) {
-            return redirect()->route('customercp.booking.gmail')->with('status', 'Email này chưa được đăng ký');
+            return redirect()->route('garagebooking.gmail')->with('msg', 'Email này chưa được đăng ký');
         }
 
         $customer = $customer[0];
@@ -243,7 +244,7 @@ class BookingController extends Controller
         ];
 
         $this->bookings->addBooking($dataInsert);
-        return redirect()->route('customercp.booking.getAdd')->with('msg', 'Đặt lịch hẹn thành công');
+        return redirect()->route('garagebooking.getAdd')->with('msg', 'Đặt lịch hẹn thành công');
     }
 
     public function bookingGmail() {

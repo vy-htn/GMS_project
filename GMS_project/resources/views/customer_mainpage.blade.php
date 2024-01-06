@@ -33,7 +33,7 @@
                 <br>
                 <div class="row">
                     <div class="col-2"></div>
-                    <a href="{{route('customercp.booking.gmail')}}" class="col-6 btn btn-lg btn-outline-light">Đặt hẹn ngay</a>
+                    <a href="{{route('garagebooking.gmail')}}" class="col-6 btn btn-lg btn-outline-light">Đặt hẹn ngay</a>
                 </div>
             </div>
             </div>

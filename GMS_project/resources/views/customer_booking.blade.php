@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container row">
                 <div class="col-1"></div>
-                <div class="col-9" ><h2>Dịch vụ gara</h2></div>
+                <div class="col-9" ><h2>Garage Booking</h2></div>
               
                 <div class="col-4" href=""></div>
                
@@ -39,7 +39,7 @@
     <form class="col-md-5 row g-3" method="POST" action="">
         @csrf
         @if (session('msg'))
-        <div class="alert alert-success text-center">{{session('msg')}}</div>
+        <div class="alert alert-success text-center">{{$message}}</div>
         @endif
         <div class="card">
             <br>

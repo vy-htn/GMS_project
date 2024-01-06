@@ -36,7 +36,7 @@
                     <p>Bạn luôn muốn đảm bảo rằng chiếc xe của bạn luôn ở trạng thái hoạt động tốt nhất, phải không? Để giúp bạn duy trì xe của mình ở mức độ tối ưu, chúng tôi xin giới thiệu Đặt Hẹn Garage - nền tảng đặt lịch hẹn bảo dưỡng xe hiện đại và thuận tiện nhất.</p>
                     <br>
 
-                    <form class="card row" action="{{ route('customercp.booking.getAdd') }}" method="PÓ">
+                    <form class="card row" action="{{ route('garagebooking.getAdd') }}" method="PÓ">
                         <div class="mb-3 col-12">
                             <label for="exampleInputEmail1" class="form-label">Nhập gmail đã đăng ký</label>
                             <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
